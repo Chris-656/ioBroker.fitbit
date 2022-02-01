@@ -1,0 +1,77 @@
+{
+	"common": {
+		"name": "fitbit",
+		"version": "0.0.1",
+		"news": {
+			"0.0.1": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"zh-cn": "首次出版"
+			}
+		},
+		"title": "fitbit",
+		"titleLang": {
+			"en": "fitbit",
+			"de": "fitbit",
+			"ru": "фитбит",
+			"pt": "fitbit",
+			"nl": "fitbit",
+			"fr": "fitbit",
+			"it": "fitbit",
+			"es": "fitbit",
+			"pl": "fitbit",
+			"zh-cn": "Fitbit"
+		},
+		"desc": {
+			"en": "fitbit adapeter to read fitness data",
+			"de": "Fitbit Adapter zum Auslesen von Fitnessdaten",
+			"ru": "Fitbit Adapeter для чтения данных о фитнесе",
+			"pt": "adaptador fitbit para ler dados de fitness",
+			"nl": "fitbit-adapter om fitnessgegevens te lezen",
+			"fr": "adaptateur fitbit pour lire les données de fitness",
+			"it": "adattatore fitbit per leggere i dati di fitness",
+			"es": "adaptador fitbit para leer datos de fitness",
+			"pl": "adapter fitbit do odczytu danych fitness",
+			"zh-cn": "fitbit 适配器读取健身数据"
+		},
+		"authors": [
+			"Chris1965 <besterquester@live.at>"
+		],
+		"keywords": [
+			"health",
+			"monitoring"
+		],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "main.js",
+		"icon": "fitbit.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/Chris1965/ioBroker.fitbit/main/admin/fitbit.png",
+		"readme": "https://github.com/Chris1965/ioBroker.fitbit/blob/main/README.md",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "health",
+		"compact": true,
+		"connectionType": "cloud",
+		"dataSource": "poll",
+		"materialize": true,
+		"dependencies": [
+			{
+				"js-controller": ">=2.0.0"
+			}
+		]
+	},
+	"native": {
+		"option1": true,
+		"option2": "42"
+	},
+	"objects": [],
+	"instanceObjects": []
+}
