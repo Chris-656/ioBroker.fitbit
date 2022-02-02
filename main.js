@@ -36,7 +36,7 @@ class Fitbit extends utils.Adapter {
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
-		this.log.info("config option1: " + this.config.option1);
+		this.log.info("config test option1: " + this.config.option1);
 		this.log.info("config option2: " + this.config.option2);
 
 		/*
@@ -44,10 +44,10 @@ class Fitbit extends utils.Adapter {
 		Here a simple template for a boolean variable named "testVariable"
 		Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
 		*/
-		await this.setObjectNotExistsAsync("testVariable", {
+		await this.setObjectNotExistsAsync("testVariable2", {
 			type: "state",
 			common: {
-				name: "testVariable",
+				name: "testVariable bbbb",
 				type: "boolean",
 				role: "indicator",
 				read: true,
