@@ -102,10 +102,15 @@ class Fitbit extends utils.Adapter {
 
 	async getFitbitRecords() {
 		this.log.info(`Getting data for user ${this.fitbit.user.fullName}`);
-
-		await this.getBodyRecords();
-		await this.getFoodRecords();
-		await this.getSleepRecords();
+		if (this.config.bodyrecords) {
+			await this.getBodyRecords();
+		}
+		if (this.config.foodrecords) {
+			await this.getFoodRecords();
+		}
+		if (this.config.sleeprecords) {
+			await this.getSleepRecords();
+		}
 	}
 
 	async getBodyRecords() {
