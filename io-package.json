@@ -96,7 +96,7 @@
         "refresh": 30,
         "token": "",
         "bodyrecords": false,
-        "activitiyrecords": false,
+        "activityrecords": false,
         "sleeprecords": false,
         "foodrecords": false,
         "devicerecords": false
@@ -159,6 +159,50 @@
                 "role": "state",
                 "name": "Access token",
                 "type": "string",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "activity",
+            "type": "channel",
+            "common": {
+                "name": "Activity records"
+            },
+            "native": {}
+        },
+        {
+            "_id": "activity.Steps",
+            "type": "state",
+            "common": {
+                "role": "state",
+                "name": "Steps",
+                "type": "number",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "activity.Calories",
+            "type": "state",
+            "common": {
+                "role": "state",
+                "name": "Calories",
+                "type": "number",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "activity.ActivitiesCount",
+            "type": "state",
+            "common": {
+                "role": "state",
+                "name": "Number of daily Activities",
+                "type": "number",
                 "read": true,
                 "write": false
             },

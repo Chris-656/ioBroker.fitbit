@@ -2,6 +2,11 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
+
+## **WORK IN PROGRESS**
+- added Activity Records
+- Fixed refresh rate
+
 ## 0.1.1 (2022-02-02)
 -
 

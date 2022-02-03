@@ -69,6 +69,22 @@ class Fitbit extends utils.Adapter {
 			});
 	}
 
+	async getFitbitRecords() {
+		this.log.info(`Getting data for user ${this.fitbit.user.fullName}`);
+
+		if (this.config.activityrecords) {
+			await this.getActivityRecords();
+		}
+		if (this.config.bodyrecords) {
+			await this.getBodyRecords();
+		}
+		if (this.config.foodrecords) {
+			await this.getFoodRecords();
+		}
+		if (this.config.sleeprecords) {
+			await this.getSleepRecords();
+		}
+	}
 
 	async login() {
 		const url = "https://api.fitbit.com/1/user/-/profile.json";
@@ -79,17 +95,16 @@ class Fitbit extends utils.Adapter {
 					headers: { "Authorization": `Bearer ${token}` },
 					timeout: axiosTimeout
 				});
-			this.log.info(`Status: ${response.status}`);
 
 			this.fitbit.status = response.status;
 
 			if (this.fitbit.status === 200) {
 				this.setState("info.connection", true, true);
+				this.log.info(`Logged in Status: ${response.status}`);
 				this.setUserStates(response.data);
 			}
 		}
 		catch (err) {
-			//this.log.error(`FITBIT Connection Error: ${err}`);
 			throw new Error(err);
 		}
 	}
@@ -100,16 +115,37 @@ class Fitbit extends utils.Adapter {
 		this.setState("user.fullName", this.fitbit.user.fullName, true);
 	}
 
-	async getFitbitRecords() {
-		this.log.info(`Getting data for user ${this.fitbit.user.fullName}`);
-		if (this.config.bodyrecords) {
-			await this.getBodyRecords();
+	async getActivityRecords() {
+
+		const url = `${BASE_URL}-/activities/date/${this.getDate()}.json`;
+
+		try {
+			const response = await axios.get(url,
+				{
+					headers: { "Authorization": `Bearer ${this.config.token}` },
+					timeout: axiosTimeout
+				});
+			this.log.info(`Status: ${response.status}`);
+
+			if (response.status === 200) {
+				this.setActivityStates(response.data);
+			}
 		}
-		if (this.config.foodrecords) {
-			await this.getFoodRecords();
+		catch (err) {
+			this.log.warn(`${err}`);
 		}
-		if (this.config.sleeprecords) {
-			await this.getSleepRecords();
+	}
+
+	setActivityStates(data) {
+		if (data.summary) {
+			this.fitbit.activities = data;				// First record in the array
+			this.log.info(`Activity Records retrieved Steps:${this.fitbit.activities.summary.steps} Calories:${this.fitbit.activities.summary.caloriesOut}`);
+
+			this.setState("activity.Steps", this.fitbit.activities.summary.steps, true);
+			this.setState("activity.Calories", this.fitbit.activities.summary.caloriesOut, true);
+			this.setState("activity.ActivitiesCount", this.fitbit.activities.activities.length, true);
+		} else {
+			throw new Error("FITBit: No Activity records available");
 		}
 	}
 
@@ -125,23 +161,28 @@ class Fitbit extends utils.Adapter {
 					headers: { "Authorization": `Bearer ${token}` },
 					timeout: axiosTimeout
 				});
-			this.log.info(`Status: ${response.status}`);
+			//this.log.info(`Status: ${response.status}`);
 
 			if (response.status === 200) {
 				this.setBodyStates(response.data);
 			}
 		}
 		catch (err) {
-			this.log.error(`FITBIT Body Data Error: ${err}`);
+			this.log.warn(`${err}`);
 		}
 	}
 
 	setBodyStates(data) {
-		this.fitbit.body = data.weight[0];				// First record in the array
-		this.log.info(`Body records retrieved Weight:${this.fitbit.body.weight} Fat:${this.fitbit.body.fat} BMI:${this.fitbit.body.bmi}`);
-		this.setState("body.weight", this.fitbit.body.weight, true);
-		this.setState("body.fat", this.fitbit.body.fat, true);
-		this.setState("body.bmi", this.fitbit.body.bmi, true);
+		if (data.weight.length > 0) {
+			this.fitbit.body = data.weight[0];				// First record in the array
+			this.log.info(`Body records retrieved Weight:${this.fitbit.body.weight} Fat:${this.fitbit.body.fat} BMI:${this.fitbit.body.bmi}`);
+			this.setState("body.weight", this.fitbit.body.weight, true);
+			this.setState("body.fat", this.fitbit.body.fat, true);
+			this.setState("body.bmi", this.fitbit.body.bmi, true);
+		}
+		else {
+			throw new Error("FITBit: No Body records available");
+		}
 	}
 
 	async getFoodRecords() {
@@ -155,19 +196,19 @@ class Fitbit extends utils.Adapter {
 					headers: { "Authorization": `Bearer ${this.config.token}` },
 					timeout: axiosTimeout
 				});
-			this.log.info(`Food Status: ${response.status}`);
 
 			if (response.status === 200) {
 				this.setFoodStates(response.data);
 			}
 		}
 		catch (err) {
-			this.log.error(`FITBIT Food Data Error: ${err}`);
+			this.log.warn(`${err}`);
 		}
 	}
 
 	setFoodStates(data) {
-		try {
+
+		if (data.foods.length > 0) {
 			this.fitbit.food = data.summary;				// First record in the array
 			this.log.info(`Food records retrieved Cal:${this.fitbit.food.calories} Water:${this.fitbit.food.water} FAT:${this.fitbit.food.fat} Protein:${this.fitbit.food.protein}`);
 
@@ -175,10 +216,10 @@ class Fitbit extends utils.Adapter {
 			this.setState("food.Calories", this.fitbit.food.calories, true);
 			this.setState("food.Fat", this.fitbit.food.fat, true);
 			this.setState("food.Protein", this.fitbit.food.protein, true);
+		} else {
+			throw new Error("FITBit: No Food records available");
 		}
-		catch (err) {
-			this.log.error(`FITBIT Food Error: ${err}`);
-		}
+
 	}
 
 	async getSleepRecords() {
@@ -191,24 +232,28 @@ class Fitbit extends utils.Adapter {
 					headers: { "Authorization": `Bearer ${this.config.token}` },
 					timeout: axiosTimeout
 				});
-			this.log.info(`Food Status: ${response.status}`);
+			//this.log.info(`Food Status: ${response.status}`);
 
 			if (response.status === 200) {
 				this.setSleepStates(response.data);
 			}
 		}
 		catch (err) {
-			this.log.error(`FITBIT Food Data Error: ${err}`);
+			this.log.warn(`${err}`);
 		}
 	}
 	setSleepStates(data) {
-		this.fitbit.sleep = data.summary.stages;				// First record in the array
-		this.log.info(`Sleep records retrieved Deep:${this.fitbit.sleep.deep} light:${this.fitbit.sleep.light} rem:${this.fitbit.sleep.rem} wake:${this.fitbit.sleep.wake}`);
+		if (data.sleep.length > 0) {
+			this.fitbit.sleep = data.summary.stages;				// First record in the array
+			this.log.info(`Sleep records retrieved Deep:${this.fitbit.sleep.deep} light:${this.fitbit.sleep.light} rem:${this.fitbit.sleep.rem} wake:${this.fitbit.sleep.wake}`);
 
-		this.setState("sleep.Deep", this.fitbit.sleep.deep, true);
-		this.setState("sleep.Light", this.fitbit.sleep.light, true);
-		this.setState("sleep.Rem", this.fitbit.sleep.rem, true);
-		this.setState("sleep.Wake", this.fitbit.sleep.wake, true);
+			this.setState("sleep.Deep", this.fitbit.sleep.deep, true);
+			this.setState("sleep.Light", this.fitbit.sleep.light, true);
+			this.setState("sleep.Rem", this.fitbit.sleep.rem, true);
+			this.setState("sleep.Wake", this.fitbit.sleep.wake, true);
+		} else {
+			throw new Error("FITBit: No Sleep Data found");
+		}
 	}
 
 	getDate() {
@@ -231,7 +276,10 @@ class Fitbit extends utils.Adapter {
 			// clearTimeout(timeout2);
 			// ...
 			// clearInterval(interval1);
-
+			if (this.updateInterval) {
+				clearInterval(this.updateInterval);
+				this.updateInterval = null;
+			}
 			callback();
 		} catch (e) {
 			callback();
