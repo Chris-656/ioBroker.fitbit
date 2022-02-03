@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fitbit",
-        "version": "0.1.1",
+        "version": "0.1.2",
         "news": {
+            "0.1.2": {
+                "en": "added Activity Records\nFixed refresh rate",
+                "de": "Aktivitätsaufzeichnungen hinzugefügt\nFeste Bildwiederholfrequenz",
+                "ru": "добавлены записи активности\nФиксированная частота обновления",
+                "pt": "Registros de Atividade adicionados\nTaxa de atualização fixa",
+                "nl": "toegevoegde activiteitenrecords\nVaste verversingssnelheid",
+                "fr": "Enregistrements d'activité ajoutés\nTaux de rafraîchissement fixe",
+                "it": "Aggiunti record di attività\nFrequenza di aggiornamento fissa",
+                "es": "registros de actividad agregados\nFrecuencia de actualización fija",
+                "pl": "dodane rekordy aktywności\nNaprawiono częstotliwość odświeżania",
+                "zh-cn": "添加了活动记录\n固定刷新率"
+            },
             "0.1.1": {
                 "en": "",
                 "de": "",

@@ -3,7 +3,7 @@
     ## **WORK IN PROGRESS**
 -->
 
-## **WORK IN PROGRESS**
+## 0.1.2 (2022-02-03)
 - added Activity Records
 - Fixed refresh rate
 
