@@ -16,8 +16,8 @@ systemDictionary = {
 		"zh-cn": "fitbit的适配器设置"
 	},
 	"refresh": {
-		"en": "Refresh Rate",
-		"de": "Aktualisierungsrate",
+		"en": "Refresh Rate (in Minutes)",
+		"de": "Aktualisierungsrate (Minuten)",
 		"ru": "Частота обновления",
 		"pt": "Taxa de atualização",
 		"nl": "Vernieuwingsfrequentie",

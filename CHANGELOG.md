@@ -2,13 +2,17 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
+## **WORK IN PROGRESS**
+- Add: Loggings adapted
+- Fix: Changes Refresh Time to minutes
+
 
 ## 0.1.2 (2022-02-03)
 - added Activity Records
 - Fixed refresh rate
 
 ## 0.1.1 (2022-02-02)
--
+- Minor Fixes
 
 ## 0.1.0 (2022-01-30)
 - Initial version
