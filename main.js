@@ -58,7 +58,7 @@ class Fitbit extends utils.Adapter {
 
 					this.updateInterval = setInterval(() => {
 						this.getFitbitRecords();
-					}, this.config.refresh * 1000); 			// in seconds
+					}, this.config.refresh * 1000 * 60); 			// in seconds
 				} else {
 					this.setState("info.connection", false, true);
 					this.log.warn(`FITBit login failed ${this.fitbit.status}`);
@@ -181,7 +181,7 @@ class Fitbit extends utils.Adapter {
 			this.setState("body.bmi", this.fitbit.body.bmi, true);
 		}
 		else {
-			throw new Error("FITBit: No Body records available");
+			throw new Error("FITBit: No Weight records available");
 		}
 	}
 
