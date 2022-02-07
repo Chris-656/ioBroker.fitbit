@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "fitbit",
-        "version": "0.1.2",
+        "version": "0.1.3",
         "news": {
+            "0.1.3": {
+                "en": "Add: Loggings adapted\nFix: Changes Refresh Time to minutes",
+                "de": "Add: Loggings angepasst\nFix: Ändert die Aktualisierungszeit auf Minuten",
+                "ru": "Добавлено: журналы адаптированы\nИсправлено: изменение времени обновления на минуты",
+                "pt": "Adicionar: Loggings adaptados\nCorreção: altera o tempo de atualização para minutos",
+                "nl": "Toevoegen: Logging aangepast\nOplossing: verversingstijd wordt gewijzigd in minuten",
+                "fr": "Ajout : Loggings adaptés\nCorrectif : change le temps de rafraîchissement en minutes",
+                "it": "Aggiunta: registrazioni adattate\nCorrezione: cambia il tempo di aggiornamento in minuti",
+                "es": "Agregar: Registros adaptados\nSolución: cambia el tiempo de actualización a minutos",
+                "pl": "Dodaj: Dostosowane dzienniki\nPoprawka: zmienia czas odświeżania na minuty",
+                "zh-cn": "添加：日志记录已调整\n修复：将刷新时间更改为分钟"
+            },
             "0.1.2": {
                 "en": "added Activity Records\nFixed refresh rate",
                 "de": "Aktivitätsaufzeichnungen hinzugefügt\nFeste Bildwiederholfrequenz",

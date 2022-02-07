@@ -1,6 +1,6 @@
 {
   "name": "iobroker.fitbit",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "fitbit adapeter to read fitness data",
   "author": "Chris1965 <besterquester@live.at>",
   "homepage": "https://github.com/Chris1965/ioBroker.fitbit",

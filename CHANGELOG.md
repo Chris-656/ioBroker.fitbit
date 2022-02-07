@@ -2,7 +2,7 @@
 <!--
     ## **WORK IN PROGRESS**
 -->
-## **WORK IN PROGRESS**
+## 0.1.3 (2022-02-07)
 - Add: Loggings adapted
 - Fix: Changes Refresh Time to minutes
 
