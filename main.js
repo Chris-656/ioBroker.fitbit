@@ -84,10 +84,7 @@ class Fitbit extends utils.Adapter {
 			await this.getFoodRecords();
 		}
 		if (this.config.sleeprecords) {
-			if (actualDate != this.fitbit.sleepRecordsStoredate) {
-				await this.getSleepRecords();
-				this.fitbit.sleepRecordsStoredate = new Date().getDate();
-			}
+			await this.getSleepRecords();
 		}
 	}
 
