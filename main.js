@@ -33,6 +33,7 @@ class Fitbit extends utils.Adapter {
 
 		this.updateInterval = null;
 		this.fitbit = {};
+		this.fitbit.sleepRecordsStoredate = null;
 	}
 
 	/**
@@ -71,6 +72,7 @@ class Fitbit extends utils.Adapter {
 
 	async getFitbitRecords() {
 		this.log.info(`Getting data for user ${this.fitbit.user.fullName}`);
+		const actualDate = new Date().getDate();
 
 		if (this.config.activityrecords) {
 			await this.getActivityRecords();
@@ -82,7 +84,10 @@ class Fitbit extends utils.Adapter {
 			await this.getFoodRecords();
 		}
 		if (this.config.sleeprecords) {
-			await this.getSleepRecords();
+			if (actualDate != this.fitbit.sleepRecordsStoredate) {
+				await this.getSleepRecords();
+				this.fitbit.sleepRecordsStoredate = new Date().getDate();
+			}
 		}
 	}
 

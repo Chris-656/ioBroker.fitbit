@@ -4,6 +4,7 @@
 -->
 
 ## **WORK IN PROGRESS**
+- Sleep records request only once a day
 - 
 
 ## 0.1.3 (2022-02-07)
