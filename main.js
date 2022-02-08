@@ -47,7 +47,6 @@ class Fitbit extends utils.Adapter {
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
-		this.log.info("config devices: " + this.config.devicerecords);
 		this.setState("info.connection", false, true);
 
 		this.login().
@@ -72,7 +71,7 @@ class Fitbit extends utils.Adapter {
 
 	async getFitbitRecords() {
 		this.log.info(`Getting data for user ${this.fitbit.user.fullName}`);
-		const actualDate = new Date().getDate();
+		//const actualDate = new Date().getDate();
 
 		if (this.config.activityrecords) {
 			await this.getActivityRecords();
