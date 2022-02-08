@@ -1,9 +1,8 @@
 ![Logo](admin/fitbit.png)
 # ioBroker.fitbit
 
-[![Downloads](https://img.shields.io/npm/dm/iobroker.huum-sauna)](https://www.npmjs.com/package/iobroker.fitbit)
-![Number of Installations](https://img.shields.io/npm/v/iobroker.fitbit/latest)
-[![Known Vulnerabilities](https://snyk.io/test/github/chris-1965/ioBroker.huum-sauna/badge.svg)](https://app.snyk.io/org/chris-1965/iobroker.fitbit)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.fitbit)](https://www.npmjs.com/package/iobroker.fitbit)
+[![Known Vulnerabilities](https://snyk.io/test/github/chris-1965/ioBroker.fitbit/badge.svg)](https://app.snyk.io/org/chris-1965/iobroker.fitbit)
 
 
 This adapter retrieves fitbit data into iobroker.
