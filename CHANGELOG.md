@@ -4,13 +4,12 @@
 -->
 
 ## **WORK IN PROGRESS**
-- Sleep records request only once a day
+- 
 - 
 
 ## 0.1.3 (2022-02-07)
 - Add: Loggings adapted
 - Fix: Changes Refresh Time to minutes
-
 
 ## 0.1.2 (2022-02-03)
 - added Activity Records
