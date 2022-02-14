@@ -1,9 +1,9 @@
 {
-  "name": "iobroker.fitbit",
+  "name": "iobroker.fit-bit",
   "version": "0.1.3",
   "description": "fitbit adapeter to read fitness data",
   "author": "Chris1965 <besterquester@live.at>",
-  "homepage": "https://github.com/Chris1965/ioBroker.fitbit",
+  "homepage": "https://github.com/Chris1965/iobroker.fit-bit",
   "license": "MIT",
   "keywords": [
     "health",
@@ -11,7 +11,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Chris1965/ioBroker.fitbit.git"
+    "url": "git+https://github.com/Chris1965/iobroker.fit-bit.git"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.5.1"
@@ -62,7 +62,7 @@
     "release": "release-script"
   },
   "bugs": {
-    "url": "https://github.com/Chris1965/ioBroker.fitbit/issues"
+    "url": "https://github.com/Chris1965/iobroker.fit-bit/issues"
   },
   "directories": {
     "lib": "lib",
